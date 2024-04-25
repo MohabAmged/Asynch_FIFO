@@ -3,5 +3,9 @@ In asynchronous FIFO, data read and write operations use different clock frequen
 ## Architecture 
 ![image](https://github.com/MohabAmged/Asynch_FIFO/assets/68222258/33b7659f-d2bb-4df2-bb60-9e71a745ba17)
 ## Simulation results 
+### Waveform
+![image](https://github.com/MohabAmged/Asynch_FIFO/assets/68222258/912addec-62dc-441f-9905-c31093c97d41)
+### Transcript 
+![image](https://github.com/MohabAmged/Asynch_FIFO/assets/68222258/1652d1f1-20a9-4b98-8a8b-6bfa6d8fa7fd)
 
 
