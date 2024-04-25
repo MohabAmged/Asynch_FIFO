@@ -45,8 +45,9 @@ begin
             #1;
         end
         @( posedge rd_clk ) begin
-            #1;
-            rd_en=0; 
+			#1;
+            rd_en=0;
+            expect(x);			
         end
     end
 end
@@ -64,6 +65,21 @@ begin
         end
 end
 endtask
+
+task expect (input integer x) ; 
+begin
+		if (x == rd_data ) begin
+		$display ( "Time : %0t Test Passed  :  Expect %0h rd_data %0h" ,$time , x , rd_data);
+		end
+		else begin 
+		$display ( "Time : %0t  Test Failed  :  Expect %0h rd_data %0h" ,$time , x , rd_data);
+		end
+end
+endtask
+
+
+
+
 
 
 task write ; 
@@ -111,6 +127,7 @@ initial begin
     write('h11);
     #50;
     read();
+	expect('h11);
     write_full();
     #50;
     read_full();
@@ -118,22 +135,27 @@ initial begin
     write('hff);
     #50;
     read();
+	expect('hff);
     #50;
     write('h55);
     write('hee);
     write('haa);
     #50;
     read();
+	expect('h55);
     read();
+	expect('hee);
     write('h11);
     #50;
     read();
+	expect('haa);
     read();
+	expect('h11);
     #50;
     write_full();
     #50;
     read_full();
-    
+    $finish;
 end
 
 
